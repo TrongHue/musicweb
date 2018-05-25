@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "search";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+
+    $.getJSON('/api/song', { searchtext: '@TempData["Source"]' }, function (data) {
+            $('.ajaxdata').remove();
+            $(data).each(function (key, value) {
+                $('.searchquery').append('<tr class="ajaxdata" style="border-bottom:1px solid aqua;" ><td ><a style="text-decoration:none; " data-source="' + value.songSource + '" class="data" href=\"\"> ' + value.songName + '</td><td> '+ value.songSinger +'</a></td></tr>')
+            });
+    });
+    $('body').on('click', '.data', function (e) {
+                e.preventDefault();
+                var source=$(this).data('source');
+                $.ajax(
+                    {
+                        method: 'GET',
+                        url: '@Url.Action("GetSource", "Home")',
+                        data: { source: source },
+                        type:'json',
+                        success: function (response)
+                        {
+                            window.location.href ='/Home/Play';
+                        }
+                    });
+            });
+
+
+</script>
+<script>
+            $('document').ready(function () {
+                if (@Session["logedUserID"]!=null) {
+                    document.getElementById('loginbutton').style.display = 'none';
+                    document.getElementById('signupbutton').style.display = 'none';
+                    document.getElementById('Signoutbutton').style.display = 'block';
+                }
+            });
+
+</script>
+
+<div id="contentzone" style="height:1900px; text-align">
+    <div id="emtyleft" class="col-md-2"></div>
+    <div id="contentplay" class="col-md-8">
+        <table class="searchquery" width="100%">
+            <h3>Kết quả tìm được :</h3>
+            <tr style="text-align:center;border-bottom:1px solid aqua;"><td>Tên bài hát</td><td>Tên ca sĩ</td></tr>
+        </table>
+
+    </div>
+    <div id="emtyright"></div>
+</div>
+

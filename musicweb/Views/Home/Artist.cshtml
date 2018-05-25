@@ -1,0 +1,66 @@
+﻿
+@{
+    ViewBag.Title = "Artist";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    $('document').ready(function () {
+
+        $.getJSON('/api/song', function (data) {
+
+            $(data).each(function (key, value) {
+
+                $.getJSON('http://ws.audioscrobbler.com/2.0/?method=artist.getinfo&artist=' + value.songSinger + '&api_key=fa96f2215b9159517bbc9eecbce0a5d8&format=json', function (data) {
+                    $(data).each(function (key, value) {
+                        $('#tableartist').append('<tr style=" border-bottom:1px solid;"><td><a href=\"\" class="data" data-source="' + value.artist.name + '"><img src="' + value.artist.image[4]['#text'] + '" onerror="this.onerror=null;this.src=' + '/Assest/image / null.png'+'" height="300px" width="300px"/></a></td><td><p style="text-align:center;">' + value.artist.bio.summary + '</p></td></tr>');
+
+                    });
+
+                });
+
+
+            });
+
+        });
+    });
+
+    $('body').on('click', '.data', function (e) {
+                e.preventDefault();
+                var source=$(this).data('source');
+                $.ajax(
+                    {
+                        method: 'GET',
+                        url: '@Url.Action("GetSource", "Home")',
+                        data: { source: source },
+                        type:'json',
+                        success: function (response)
+                        {
+                            window.location.href ='/Home/songByArtist';
+                        }
+                    });
+            });
+</script>
+<script>
+            $('document').ready(function () {
+                if (@Session["logedUserID"]!=null) {
+                    document.getElementById('loginbutton').style.display = 'none';
+                    document.getElementById('signupbutton').style.display = 'none';
+                    document.getElementById('Signoutbutton').style.display = 'block';
+                }
+            });
+
+</script>
+<style>
+    #loginform {
+      
+    }
+</style>
+<div id="contentzone" style="height:7000px;">
+    <div id="emtyleft" class="col-md-2"></div>
+    <div id="contentArtist" class="col-md-8">
+        <table id="tableartist"></table>
+       
+    </div>
+   
+    <div id="emtyright"></div>
+</div>

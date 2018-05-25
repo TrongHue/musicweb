@@ -1,0 +1,20 @@
+﻿SET IDENTITY_INSERT [dbo].[albums] ON
+INSERT INTO [dbo].[albums] ([albumID], [albumName], [albumPic], [albumTimrelease]) VALUES (1, N'÷', N'/Assest/image/images.jpg', N'2017-03-03 00:00:00')
+INSERT INTO [dbo].[albums] ([albumID], [albumName], [albumPic], [albumTimrelease]) VALUES (2, N'The Hurting. The Healing. The Loving.', N'/Assest/image/download.jpg', N'2017-10-08 00:00:00')
+INSERT INTO [dbo].[albums] ([albumID], [albumName], [albumPic], [albumTimrelease]) VALUES (3, N'Is There Anybody Out There?', N'/Assest/image/Is-There-Anybody-Out-There-album.jpg', N'2014-01-21 00:00:00')
+INSERT INTO [dbo].[albums] ([albumID], [albumName], [albumPic], [albumTimrelease]) VALUES (4, N'Haiz', N'/Assest/image/download (1).jpg', N'2015-11-13 00:00:00')
+INSERT INTO [dbo].[albums] ([albumID], [albumName], [albumPic], [albumTimrelease]) VALUES (6, N'A/B', N'/Assest/image/images (1).jpg', N'2016-06-10 00:00:00')
+INSERT INTO [dbo].[albums] ([albumID], [albumName], [albumPic], [albumTimrelease]) VALUES (7, N'Purpose', N'/Assest/image/download (2).jpg', N'2015-11-13 00:00:00')
+INSERT INTO [dbo].[albums] ([albumID], [albumName], [albumPic], [albumTimrelease]) VALUES (13, N'Single', NULL, N'1990-01-01 00:00:00')
+SET IDENTITY_INSERT [dbo].[albums] OFF
+
+SET IDENTITY_INSERT [dbo].[songs] ON
+INSERT INTO [dbo].[songs] ([songCode], [songName], [songSource], [songPicture], [timRelease], [songType], [songSinger], [albumID], [songListened]) VALUES (1, N'Save My Self', N'/source/Save Myself - Ed Sheeran [320kbps_MP3].mp3', N'/Assest/image/images.jpg', N'2017-03-03 00:00:00', N'Pop', N'Ed Sheeran', 1, 1)
+INSERT INTO [dbo].[songs] ([songCode], [songName], [songSource], [songPicture], [timRelease], [songType], [songSinger], [albumID], [songListened]) VALUES (2, N'Dusk Till Dawn', N'/source/Dusk Till Dawn - Zayn_ Sia [320kbps_MP3].mp3', N'/Assest/image/Dusk_Till_Dawn_Zayn_Malik.jpg', N'2017-09-07 00:00:00', N'Pop', N'Zayn Malik', 13, 18)
+INSERT INTO [dbo].[songs] ([songCode], [songName], [songSource], [songPicture], [timRelease], [songType], [songSinger], [albumID], [songListened]) VALUES (3, N'Havana', N'/source/Havana - Camila Cabello_ Young Thug [320kbps_MP3].mp3', N'/Assest/image/Havana_(featuring_Young_Thug)_(Official_Single_Cover)_by_Camila_Cabello.png', N'2017-08-03 00:00:00', N'Pop', N'Camila Cabello', 2, 0)
+INSERT INTO [dbo].[songs] ([songCode], [songName], [songSource], [songPicture], [timRelease], [songType], [songSinger], [albumID], [songListened]) VALUES (4, N'What Lovers Do', N'/source/What Lovers Do - Maroon 5_ SZA [320kbps_MP3].mp3', N'/Assest/image/whatloversdo.jpg', N'2017-08-30 00:00:00', N'Pop', N'Maroon 5', 13, 5)
+INSERT INTO [dbo].[songs] ([songCode], [songName], [songSource], [songPicture], [timRelease], [songType], [songSinger], [albumID], [songListened]) VALUES (5, N'Way Down We Go', N'/source/Way Down We Go - Kaleo [320kbps_MP3].mp3', N'/Assest/image/KaleoWayDownWeGo.jpg', N'2017-01-01 00:00:00', N'Rock', N'Kaleo', 6, 0)
+INSERT INTO [dbo].[songs] ([songCode], [songName], [songSource], [songPicture], [timRelease], [songType], [songSinger], [albumID], [songListened]) VALUES (6, N'Youre Such A', N'/source/You_re Such A - Hailee Steinfeld [320kbps_MP3].mp3', N'/Assest/image/download (1).jpg', N'2015-11-13 00:00:00', N'Pop', N'Hailee Steinfeld', 4, 0)
+INSERT INTO [dbo].[songs] ([songCode], [songName], [songSource], [songPicture], [timRelease], [songType], [songSinger], [albumID], [songListened]) VALUES (7, N'Love Yourself', N'/source/Love Yourself - Justin Bieber [320kbps_MP3].mp3', N'/Assest/image/download (2).jpg', N'2015-11-09 00:00:00', N'Pop', N'Justin Bieber', 7, 0)
+INSERT INTO [dbo].[songs] ([songCode], [songName], [songSource], [songPicture], [timRelease], [songType], [songSinger], [albumID], [songListened]) VALUES (8, N'Say Something', N'/source/Say Something - A Great Big World_ Chris [320kbps_MP3].mp3', N'/Assest/image/Is-There-Anybody-Out-There-album.jpg', N'2013-11-04 00:00:00', N'Pop', N'A Great Big World', 3, 0)
+SET IDENTITY_INSERT [dbo].[songs] OFF

@@ -1,0 +1,133 @@
+﻿
+@{
+    ViewBag.Title = "Top10";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+
+    $.getJSON('/api/song', { type: 'Pop' }, function (data) {
+        var i = 0;
+        $(data).each(function (key, value) {
+           
+            i++;
+            $('.tablenTop10Pop').append('<tr><td>' + i + '<a style="text-decoration:none;" data-source="' + value.songSource + '" class="data" href=\"\"><img src="' + value.songPicture + '"  height="200px" width="240" alt="anh"  /> <p align="center">' + value.songName + '</p></a></td></tr>');
+        });
+
+    });
+    $.getJSON('/api/song', { type: 'Bolero' }, function (data) {
+        var i = 0;
+        $(data).each(function (key, value) {
+
+            i++;
+            $('.tablenTop10Bolero').append('<tr><td><a style="text-decoration:none;" data-source="' + value.songSource + '" class="data" href=\"\"><img src="' + value.songPicture + '"  height="200px" width="240" alt="anh"  /> <p align="center">' + value.songName + '</p></a></td></tr>');
+        });
+
+    });
+    $.getJSON('/api/song', { type: 'Rap' }, function (data) {
+        var i = 0;
+        $(data).each(function (key, value) {
+
+            i++;
+            $('.tablenTop10Rap').append('<tr><td><a style="text-decoration:none;" data-source="' + value.songSource + '" class="data" href=\"\"><img src="' + value.songPicture + '"  height="200px" width="240" alt="anh"  /> <p align="center">' + value.songName + '</p></a></td></tr>');
+        });
+
+    });
+    $.getJSON('/api/song', { type: 'Rock' }, function (data) {
+        $(data).each(function (key, value) {
+            $('.tablenTop10Rock').append('<tr><td><a style="text-decoration:none;" data-source="' + value.songSource + '" class="data" href=\"\"><img src="' + value.songPicture + '"  height="200px" width="240" alt="anh"  /> <p align="center">' + value.songName + '</p></a></td></tr>');
+        });
+    });
+    $('body').on('click', '.data', function (e) {
+        e.preventDefault();
+
+        var source = $(this).data('source');
+        $.ajax(
+            {
+                method: 'GET',
+                url: '@Url.Action("GetSource", "Home")',
+                data: { source: source },
+                type: 'json',
+                success: function (response) {
+                    window.location.href = '/Home/Play';
+                }
+            });
+    });
+   
+</script>
+<script>
+    function playlist(songtype)
+    {
+        
+      $.ajax(
+                    {
+                        method: 'GET',
+                        url: '@Url.Action("GetSourceList", "Home")',
+                        data: { type: songtype },
+                        type:'json',
+                        success: function (response)
+                        {
+                            window.location.href ='/Home/playlisttop10';
+                        }
+                   
+            });
+
+
+
+    }
+</script>
+
+<script>
+            $('document').ready(function () {
+                if (@Session["logedUserID"]!=null) {
+                    document.getElementById('loginbutton').style.display = 'none';
+                    document.getElementById('signupbutton').style.display = 'none';
+                    document.getElementById('Signoutbutton').style.display = 'block';
+                }
+            });
+
+</script>
+<div id="contentzone"style="height:1900px;">
+    <div id="emtyleft" class="col-md-2">
+        
+
+    </div>
+    <div id="content" class="col-md-8">
+    
+
+        <div id="contentmusic"  ">
+            <div id="Top10Pop" class="col-md-3" >
+                <h2 class="text-left" style="color:blue; font-family:'Century Gothic';">Top 10 Pop &nbsp; <a class="playlistPop" style="text-decoration:none;" href="#")"><i class="fa fa-play" onclick="playlist('Pop')"></i></a></h2><hr/>
+               
+                <table width="25%" height="70%" class="tablenTop10Pop">
+                    
+                </table>
+              
+            </div>
+            <div id="Top10Rock"  class="col-md-3">
+                <h2 class="text-left" style="color:blue; font-family:'Century Gothic';">Top 10 Rocks <a style="text-decoration:none;" href="#"><i class="fa fa-play" onclick="playlist('Rock')"></i></a></h2><hr />
+                <table width="25%" height="70%" class="tablenTop10Rock">
+                    <tr class="ajaxData"></tr>
+                </table>
+
+            </div>
+            <div id="Top10Bolero" class="col-md-3">
+                <h2 class="text-left" style="color:blue; font-family:'Century Gothic';">Top 10 Bolero  <a style="text-decoration:none;" href="#"><i class="fa fa-play" onclick="playlist('Bolero')"></i></a></h2><hr />
+                <table width="25%" height="70%" class="tablenTop10Bolero">
+                    
+                </table>
+
+            </div>
+            <div id="Top10Rap" class="col-md-3">
+                <h2 class="text-left" style="color:blue; font-family:'Century Gothic';">Top 10 Rap&nbsp; <a style="text-decoration:none;" href="#"><i class="fa fa-play" onclick="playlist('Rap')"></i></a></h2><hr />
+                <table width="25%" height="70%" class="tablenTop10Rap">
+                   
+                </table>
+
+            </div>
+
+        </div>
+   
+    </div>
+    <div id="emtyright" class="col-md-2"></div>
+</div>
+

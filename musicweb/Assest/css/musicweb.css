@@ -1,0 +1,325 @@
+body{
+    margin: 0 auto;
+    font-family: sans-serif;
+width: 100%;
+
+}
+#banner{
+height: 100px;
+width: 100%;
+background-color: rgb(241, 241, 241);
+
+
+}
+#menuzone{
+    height: 60px;
+width: 100%;
+border-bottom: 1px solid  rgb(241, 241, 241);
+
+ 
+}
+#contentzone{
+       
+width: 100%;
+
+}
+#footerzone{
+height: 83px;
+width: 100%;
+margin: 0 auto;
+ 
+ 
+}
+#logo{
+   
+    height: 100px;
+    padding-left: 20px;
+}
+#tab{
+  
+    height: 100px;
+}
+#search{
+     
+    height: 100px;
+}
+#search #textsearch{
+    margin-top: 53px;   
+}
+#emty2 #buttonsearch{
+  margin-top: 53px;  
+}
+#loginandsignup{
+      
+    height: 100px;
+}
+#tab ul{
+     list-style-type: none;
+     margin: 0 auto;
+}
+#tab li{
+
+   height: 100px;
+   line-height: 137px;
+   display: inline-block ;   
+   width: 120px;
+
+    text-align: center;
+}
+
+#tab li a{
+    text-decoration: none;
+   font-size: 30px; 
+}
+#tab li:hover{
+    background-color: white;
+}
+#loginandsignup ul{
+    list-style: none;
+    margin: 0 auto;
+}
+#loginandsignup li{
+   height: 100px;
+   line-height: 137px;
+   display: inline-block ;   
+   width: 120px;
+}
+#loginandsignup li a{
+    text-decoration: none;
+   font-size: 20px; 
+}
+#emty3{
+  
+    height: 60px;
+}
+#menu{
+        
+    height: 58px;
+}
+#userzone{
+     
+    height: 60px;
+}
+#menu ul{
+     list-style-type: none;
+     margin: 0 auto;
+    padding-left: 20px;
+}
+#menu li{
+   height: 55px;
+   line-height: 55px;
+   display: inline-block ;   
+   width: 120px;
+text-align: center;
+}
+#menu li a{
+      text-decoration: none;
+   font-size: 20px; 
+   
+}
+#menu li:hover{
+    border-bottom: 3px solid red;   
+}
+#userzone ul{
+     list-style-type: none;
+     margin: 0 auto;
+    padding-left: 20px;
+}
+#userzone li{
+   height: 55px;
+   line-height: 55px;
+   display: inline-block ;   
+   width: 120px;
+text-align: center;
+}
+#userzone li a{
+      text-decoration: none;
+   font-size: 20px; 
+   
+}
+#userzone li:hover{
+    border-bottom: 3px solid red;   
+}
+i{
+    color: red;
+}
+#content{
+   
+    margin-left: 30px;
+    height: 1700px;
+   
+}
+#new{
+    height: 300px;
+    
+    width: 100%;
+   
+    
+}
+#emty5{
+   
+    height: 83px;
+     
+}
+#footer{
+
+    height: 83px;
+  
+}
+#emty6{
+     
+    height: 83px;
+}
+#contactlogo{
+    margin-left: 15px;
+}
+b{
+    color: white;
+}
+#formsignup{
+   
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: black;
+  z-index: 1;
+    padding-top: 60px;
+    
+   
+ 
+}
+#btnformsignupcancel{
+    background-color: red;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    float: left;
+}
+#btnformsignupsignup{
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+}
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+#email, #password, #repeatpassword {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+@media screen and (max-width: 300px) {
+    .cancelbtn, .signupbtn {
+       width: 100%;
+    }
+}
+#loginform{
+float: right;
+    position: relative;
+    width: 300px;
+  margin-top: -1000px;
+margin-left: -30px;
+display: none;
+z-index: 1;
+
+}
+.arrow-up {
+    width: 0;
+    height: 0;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid #ECF0F1;
+    left: 10%;
+    position: absolute;
+    top: -10px;
+  }
+  
+  .formholder {
+    background: #ecf0f1;
+    width: 300px;
+    border-radius: 5px;
+    padding-top: 5px;
+  }
+  .formholder input[type="email"], .formholder input[type="password"] {
+    padding: 7px 5px;
+    margin: 10px 0;
+    width: 96%;
+    display: block;
+    font-size: 18px;
+    border-radius: 5px;
+    border: none;
+    -webkit-transition: 0.3s linear;
+    -moz-transition: 0.3s linear;
+    -o-transition: 0.3s linear;
+    transition: 0.3s linear;
+  }
+  .formholder input[type="email"]:focus, .formholder input[type="password"]:focus {
+    outline: none;
+    box-shadow: 0 0 1px 1px #1abc9c;
+  }
+  .formholder input[type="submit"] {
+    background: #1abc9c;
+    padding: 10px;
+    font-size: 20px;
+    display: block;
+    width: 100%;
+    border: none;
+    color: #fff;
+    border-radius: 5px;
+  }
+  .formholder input[type="submit"]:hover {
+    background: #1bc6a4;
+  }
+  .randompad {
+    padding: 10px;
+  }
+  #chatbox{
+      width: 300px;
+      height: 400px;
+     right: 0px;
+     bottom: 0px;
+      z-index: 1;
+      position: fixed;
+      display: none;
+  }
+#contentmusic {
+    height:700px;
+    
+}
+#contentvideo {
+    height: 700px;
+
+}
+#newsingle {
+height:350px;
+}
+#newalbum {
+    height: 350px;
+}
+#newmv {
+    height: 350px;
+
+}
+#hotvideo {
+    height: 350px;
+}
+#contentzoneplay {
+height:600px;
+}

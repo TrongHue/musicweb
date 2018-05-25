@@ -1,0 +1,92 @@
+﻿@using musicweb.Models;
+@{
+    ViewBag.Title = "Play";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    function count() {
+        $.getJSON('/api/song', { source: '@TempData["Source"]' }, function (data) {
+            $('.ajaxdata').remove();
+            $(data).each(function (key, value) {
+                $.ajax('/api/song', {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        songCode: value.songCode,
+                        songName: value.songName,
+                        albumID: value.albumID,
+                        songSinger: value.songSinger,
+                        songSource: value.songSource,
+                        songType: value.songType,
+                        songListened: value.songListened+1,
+                        timRelease: value.timRelease,
+                        songPicture: value.songPicture
+                    }),
+                    mimeType:'application/json',
+                });
+            });
+        });
+
+        
+    }
+</script>
+<script>
+
+    function addfavor()
+    {
+        if (@Session["logedUserID"]!=null) {
+            $.getJSON('/api/song', { source: '@TempData["Source"]' }, function (data) {
+                $('.ajaxdata').remove();
+                $(data).each(function (key, value) {
+                    $.ajax('/api/Userdo', {
+                        method: 'POST',
+                        contentType: 'application/json',
+                        data: JSON.stringify({
+                            userID:@Session["logedUserID"],
+                            songID: value.songCode
+                        }),
+                        mimeType: 'application/json',
+                    });
+                });
+            });
+            alert("add success");
+        }
+        else {
+            alert("you need to login");
+        }
+    }
+</script>
+<script>
+            $('document').ready(function () {
+                if (@Session["logedUserID"]!=null) {
+                    document.getElementById('loginbutton').style.display = 'none';
+                    document.getElementById('signupbutton').style.display = 'none';
+                    document.getElementById('Signoutbutton').style.display = 'block';
+                }
+            });
+
+</script>
+<div id="contentzone" style="height:1900px;">
+    <div id="emtyleft" class="col-md-2"></div>
+    <div id="contentplay" class="col-md-8">
+       <div id="mediaplayer" style="height:300px; border:2px solid blue; border-radius:5px;">
+           <div id="pic" style="height:200px;"></div><hr />
+           <audio  id="player" autoplay onloadstart="count()" controls loop style="width:100%;" >
+               <source src="@TempData["Source"]" />
+              
+           </audio>
+       </div>
+        <div id="action" style="height:250px;">
+            <br />
+<a href="#" onclick="addfavor()"><i class="fa fa-heart fa-2x">  Add to your favor</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#"><i class="fa fa-download fa-2x">  Download</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#"><i class="fa fa-share-square fa-2x">  Share</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href="#"><i class="fa fa-flag fa-2x">  Report</i></a>
+
+        </div>
+        <div id="test">
+        </div>
+        
+    </div>
+    <div id="emtyright"></div>
+</div>

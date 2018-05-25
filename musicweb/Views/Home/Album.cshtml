@@ -1,0 +1,53 @@
+﻿
+@{
+    ViewBag.Title = "Album";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script>
+   $.getJSON('/api/album', function (data) {
+
+                $(data).each(function (key, value) {
+
+
+
+
+                    $('#contentAlbum').append('<div class="col-sm-3" style="float:right;"><a style="text-decoration:none;" data-source="' + value.albumID + '" class="data1" href=\"\"><img src="' + value.albumPic + '"  height="200px" width="240" alt="anh"  /> <p align="center">' + value.albumName + '</p></a></div>');
+
+                });
+
+            });
+
+
+            $('body').on('click', '.data1', function (e) {
+                e.preventDefault();
+                var source=$(this).data('source');
+                $.ajax(
+                    {
+                        method: 'GET',
+                        url: '@Url.Action("GetSource", "Home")',
+                        data: { source: source },
+                        type:'json',
+                        success: function (response)
+                        {
+                            window.location.href ='/Home/SongInAlbum';
+                        }
+                    });
+         });
+</script>
+<script>
+            $('document').ready(function () {
+                if (@Session["logedUserID"]!=null) {
+                    document.getElementById('loginbutton').style.display = 'none';
+                    document.getElementById('signupbutton').style.display = 'none';
+                    document.getElementById('Signoutbutton').style.display = 'block';
+                }
+            });
+
+</script>
+<div id="contentzone" style="height:1900px;">
+    <div id="emtyleft" class="col-md-2"></div>
+    <div id="contentAlbum" class="col-md-8">    
+    </div>
+
+    <div id="emtyright"></div>
+</div>

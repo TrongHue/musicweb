@@ -1,0 +1,65 @@
+﻿
+@{
+    ViewBag.Title = "playvideo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function count() {
+        $.getJSON('/api/video', { source: '@TempData["Source"]' }, function (data) {
+            $('.ajaxdata').remove();
+            $(data).each(function (key, value) {
+                $.ajax('/api/video', {
+                    method: 'POST',
+                    contentType: 'application/json',
+                    data: JSON.stringify({
+                        videoID: value.videoID,
+                        videoName: value.videoName,
+                        videoPic: value.videoPic,
+                        videoSource: value.videoSource,
+                        videoListened: value.videoListened +1,
+                        videoTimerelease: value.videoTimerelease
+
+                    }),
+                    mimeType:'application/json',
+                });
+            });
+        });
+
+
+    }
+</script>
+<script>
+            $('document').ready(function () {
+                if (@Session["logedUserID"]!=null) {
+                    document.getElementById('loginbutton').style.display = 'none';
+                    document.getElementById('signupbutton').style.display = 'none';
+                    document.getElementById('Signoutbutton').style.display = 'block';
+                }
+            });
+
+</script>
+<div id="contentzone" style="height:1900px;">
+    <div id="emtyleft" class="col-md-2"></div>
+    <div id="contentplay" class="col-md-8">
+        <div id="mediaplayer" style="height:600px; border:2px solid blue; border-radius:5px;">
+            
+            <video id="player"  autoplay  controls loop style="width:100%;" onloadstart="count()">
+                <source src="@TempData["Source"]" />
+           
+            </video>
+        </div>
+        <div id="action" style="height:250px;">
+            <br />
+            <a href="#" onclick="addfavor()"><i class="fa fa-heart fa-2x">  Add to your favor</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#"><i class="fa fa-download fa-2x">  Download</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#"><i class="fa fa-share-square fa-2x">  Share</i></a>&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="#"><i class="fa fa-flag fa-2x">  Report</i></a>
+
+        </div>
+        <div id="test">
+        </div>
+       
+    </div>
+    <div id="emtyright"></div>
+</div>

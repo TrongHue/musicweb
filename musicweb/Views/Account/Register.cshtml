@@ -1,0 +1,51 @@
+﻿@model musicweb.Models.users
+@{
+    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div id="contentzone" style="height:1900px;">
+    <div id="emtyleft" class="col-md-2"></div>
+    <div id="contentsongInAlbum" class="col-md-8">
+        <h2 style="text-align:center;">Dang ki</h2>
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+            <div class="form-horizontal col-lg-12 ">
+                <hr />
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                @if (ViewBag.Message != null)
+                {
+                    <div class="form-group">
+                        <div class="col-md-10">@ViewBag.Message</div>
+                    </div>
+                }
+                <div class="form-group">
+                    @Html.LabelFor(model => model.userName, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.userName, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.userName, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    @Html.LabelFor(model => model.userPass, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-4">
+                        @Html.EditorFor(model => model.userPass, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.userPass, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+
+                <div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" value="Create" class="btn btn-default" />
+                    </div>
+                </div>
+            </div>
+        }
+        </div>
+    <div id="emtyright"></div>
+</div>
+
